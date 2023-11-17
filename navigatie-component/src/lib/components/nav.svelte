@@ -29,58 +29,45 @@
     <section class="filter-dropdown" class:active={filterDropdownActive}>
       {#if filterDropdownActive}
         <section class="search-bar">
+          <!-- dit kan een form zijn -->
           <input type="search" />
           <button>Zoeken</button>
         </section>
         <section class="filter-menu">
           <ul class="focus">
-            <button class="focus-button">Focus</button>
-            <div>
-              <div class="drop-down-focus">
-                <li><input type="checkbox" />Ik</li>
-                <li><input type="checkbox" />De ander</li>
-                <li><input type="checkbox" />De wereld</li>
-              </div>
-            </div>
+            <li><h2><input type="checkbox" /> Focus</h2></li>
+            <li><input type="checkbox" />Ik</li>
+            <li><input type="checkbox" />De ander</li>
+            <li><input type="checkbox" />De wereld</li>
           </ul>
           <ul class="doel">
-            <button class="focus-button">Doel</button>
-            <div>
-              <div class="drop-down-doel">
-                <li><input type="checkbox" />Professioneel id ontwikkelen</li>
-                <li>
-                  <input type="checkbox" />Persoonlijke interesse aanspreken
-                </li>
-                <li><input type="checkbox" />Kennis opdoen</li>
-                <li><input type="checkbox" />Richtlijnen toepassen</li>
-                <li><input type="checkbox" />Golden oldies verrijken</li>
-                <li><input type="checkbox" />Tools toepassen</li>
-                <li><input type="checkbox" />Dialoog voeren</li>
-                <li><input type="checkbox" />Praktijk betrekken</li>
-              </div>
-            </div>
+            <li><h2><input type="checkbox" /> Doel</h2></li>
+
+            <li><input type="checkbox" />Professioneel id ontwikkelen</li>
+            <li>
+              <input type="checkbox" />Persoonlijke interesse aanspreken
+            </li>
+            <li><input type="checkbox" />Kennis opdoen</li>
+            <li><input type="checkbox" />Richtlijnen toepassen</li>
+            <li><input type="checkbox" />Golden oldies verrijken</li>
+            <li><input type="checkbox" />Tools toepassen</li>
+            <li><input type="checkbox" />Dialoog voeren</li>
+            <li><input type="checkbox" />Praktijk betrekken</li>
           </ul>
           <ul class="onderwerp">
-            <button class="focus-button">Onderwerp</button>
-            <div>
-              <div class="drop-down-onderwerp">
-                <li><input type="checkbox" />Duurzaamheid</li>
-                <li><input type="checkbox" />Diversiteit</li>
-                <li><input type="checkbox" />Digitalisering</li>
-                <li><input type="checkbox" />Democratie</li>
-              </div>
-            </div>
+            <li><h2><input type="checkbox" /> Onderwerp</h2></li>
+
+            <li><input type="checkbox" />Duurzaamheid</li>
+            <li><input type="checkbox" />Diversiteit</li>
+            <li><input type="checkbox" />Digitalisering</li>
+            <li><input type="checkbox" />Democratie</li>
           </ul>
           <ul class="fase">
-            <button class="focus-button">Fase</button>
-            <div>
-              <div class="drop-down-fase">
-                <li><input type="checkbox" />Opwarmer</li>
-                <li><input type="checkbox" />Verbreden</li>
-                <li><input type="checkbox" />Verdiepen</li>
-                <li><input type="checkbox" />Uitwisselen</li>
-              </div>
-            </div>
+            <li><h2><input type="checkbox" /> Fase</h2></li>
+            <li><input type="checkbox" />Opwarmer</li>
+            <li><input type="checkbox" />Verbreden</li>
+            <li><input type="checkbox" />Verdiepen</li>
+            <li><input type="checkbox" />Uitwisselen</li>
           </ul>
         </section>
       {/if}
@@ -101,21 +88,21 @@
   .nav-bar > button {
     font-size: 1em;
     width: 100vw;
-    background-color: blueviolet;
+    background-color: #25167a;
     border: 0;
     padding: 1em;
   }
 
   .mobile-menu-dropdown {
-    background-color: blueviolet;
+    background-color: #25167a;
     width: 100vw;
     display: flex;
     flex-direction: column;
   }
 
   .mobile-menu-dropdown *:focus {
-    outline: 2px solid aqua;
-    background-color: aqua;
+    outline: 2px solid #66e5bf;
+    background-color: #66e5bf;
     color: black;
   }
   .mobile-menu-dropdown * {
@@ -127,16 +114,15 @@
 
   .mobile-menu-dropdown > button {
     position: relative;
-    background-color: blue;
+    background-color: #25167a;
     border: 0;
-    /* transform: translateX(-50%);
-    left: 45%; */
+
     font-size: 0.5em;
     justify-content: center;
   }
 
   .filter-dropdown {
-    background-color: blueviolet;
+    background-color: #25167a;
   }
   /* functionaliteit voor menu */
 
@@ -151,7 +137,7 @@
     /* display: block; */
     visibility: visible;
   }
-
+  /* container query ipv media? */
   @media (min-width: 700px) {
     .mobile-menu-dropdown {
       width: 100vw;
