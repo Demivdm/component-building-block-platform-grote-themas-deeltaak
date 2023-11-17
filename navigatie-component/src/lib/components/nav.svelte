@@ -89,6 +89,11 @@
 </nav>
 
 <style>
+  * {
+    overflow-x: hidden;
+    color: white;
+    margin: 0;
+  }
   nav {
     font-size: 2em;
   }
@@ -98,21 +103,69 @@
     width: 100vw;
     background-color: blueviolet;
     border: 0;
+    padding: 1em;
   }
 
+  .mobile-menu-dropdown {
+    background-color: blueviolet;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-menu-dropdown *:focus {
+    outline: 2px solid aqua;
+    background-color: aqua;
+    color: black;
+  }
   .mobile-menu-dropdown * {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    padding: 1em;
+  }
+
+  .mobile-menu-dropdown > button {
+    position: relative;
+    background-color: blue;
+    border: 0;
+    /* transform: translateX(-50%);
+    left: 45%; */
+    font-size: 0.5em;
+    justify-content: center;
+  }
+
+  .filter-dropdown {
+    background-color: blueviolet;
   }
   /* functionaliteit voor menu */
 
   .filter-dropdown,
   .mobile-menu-dropdown {
-    display: none;
+    /* display: none; */
+    visibility: hidden;
   }
 
   .nav-bar.active .mobile-menu-dropdown,
   .filter-dropdown.active {
-    display: block;
+    /* display: block; */
+    visibility: visible;
+  }
+
+  @media (min-width: 700px) {
+    .mobile-menu-dropdown {
+      width: 100vw;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+
+    .mobile-menu-dropdown > button {
+      align-items: center;
+      font-size: 0.7em;
+    }
+
+    .nav-bar > button {
+      display: none;
+    }
   }
 </style>
