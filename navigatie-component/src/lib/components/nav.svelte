@@ -93,6 +93,19 @@
     font-size: 2em;
   }
 
+  .nav-bar > button {
+    font-size: 1em;
+    width: 100vw;
+    background-color: blueviolet;
+    border: 0;
+  }
+
+  .mobile-menu-dropdown * {
+    display: flex;
+    flex-direction: row;
+  }
+  /* functionaliteit voor menu */
+
   .filter-dropdown,
   .mobile-menu-dropdown {
     display: none;
