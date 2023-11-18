@@ -1,6 +1,10 @@
 <script>
-  let mobileDropdownActive = false;
-  let filterDropdownActive = false;
+  let isJavascriptEnabled = true;
+  // Het stond orgineel op false, maar om te zorgen dat het menu ook te zien is zonder js
+  // staat het menu standaard open
+  let mobileDropdownActive = true;
+  let filterDropdownActive = true;
+
   function openMobileMenu() {
     mobileDropdownActive = !mobileDropdownActive;
 
@@ -28,10 +32,13 @@
     {/if}
     <section class="filter-dropdown" class:active={filterDropdownActive}>
       {#if filterDropdownActive}
-        <section class="search-bar">
+        <section class="search-bar" role="search">
           <!-- dit kan een form zijn -->
-          <input type="search" />
-          <button>Zoeken</button>
+          <form action="search">
+            <label for="search" class="sr-only">Zoekbalk</label>
+            <input type="text" id="search" name="search" aria-label="Search" />
+            <button type="submit" aria-label="Submit search">Zoek</button>
+          </form>
         </section>
         <section class="filter-menu">
           <ul class="focus">
@@ -81,16 +88,17 @@
     color: white;
     margin: 0;
   }
-  nav {
-    font-size: 2em;
-  }
 
   .nav-bar > button {
-    font-size: 1em;
+    font-size: 2em;
     width: 100vw;
     background-color: #25167a;
     border: 0;
     padding: 1em;
+  }
+
+  .nav-bar > button:focus {
+    background-color: #66e5bf;
   }
 
   .mobile-menu-dropdown {
@@ -98,6 +106,11 @@
     width: 100vw;
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   .mobile-menu-dropdown *:focus {
@@ -117,12 +130,17 @@
     background-color: #25167a;
     border: 0;
 
-    font-size: 0.5em;
+    font-size: 1em;
     justify-content: center;
   }
 
   .filter-dropdown {
     background-color: #25167a;
+  }
+
+  .sr-only {
+    position: absolute;
+    left: -1000000em;
   }
   /* functionaliteit voor menu */
 
@@ -139,19 +157,31 @@
   }
   /* container query ipv media? */
   @media (min-width: 700px) {
+    .nav-bar {
+      font-size: 2em;
+      display: flex;
+      width: 80vw;
+      position: relative;
+      margin-bottom: 5em;
+    }
+    .nav-bar.active {
+      box-shadow: 13px 20px 0px 1px black;
+    }
+    .nav-bar > button {
+      width: max-content;
+      font-size: 1em;
+    }
+
     .mobile-menu-dropdown {
       width: 100vw;
       flex-direction: row;
       justify-content: space-evenly;
+      align-items: center;
     }
 
     .mobile-menu-dropdown > button {
       align-items: center;
       font-size: 0.7em;
-    }
-
-    .nav-bar > button {
-      display: none;
     }
   }
 </style>
