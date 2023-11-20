@@ -3,7 +3,7 @@
   // Het stond orgineel op false, maar om te zorgen dat het menu ook te zien is zonder js
   // staat het menu standaard open
   let mobileDropdownActive = true;
-  let filterDropdownActive = true;
+  let filterDropdownActive = false;
 
   function openMobileMenu() {
     mobileDropdownActive = !mobileDropdownActive;
@@ -154,6 +154,7 @@
   .filter-dropdown.active {
     /* display: block; */
     visibility: visible;
+  
   }
   /* container query ipv media? */
   @media (min-width: 700px) {
@@ -183,5 +184,12 @@
       align-items: center;
       font-size: 0.7em;
     }
+ .nav-bar.active {
+    /* display: block; */
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+    
+  }
   }
 </style>
