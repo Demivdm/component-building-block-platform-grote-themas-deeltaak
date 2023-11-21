@@ -1,35 +1,42 @@
 <script>
-  let isJavascriptEnabled = true;
-  // Het stond orgineel op false, maar om te zorgen dat het menu ook te zien is zonder js
-  // staat het menu standaard open
+  // filter staat standaard uit, het menu is standaard uitgeklapt
   let mobileDropdownActive = true;
   let filterDropdownActive = false;
 
   function openMobileMenu() {
-    mobileDropdownActive = !mobileDropdownActive;
+    // Check if the screen width is less than 700px (or any other threshold you prefer)
+    // Deze functie checkt of de scherm breedte minder dan 700 pixels is. 
+    // wanneer het scherm kleiner is dan 700px werkt de knop, anders werkt deze niet.
+    if (window.innerWidth < 700) {
+      mobileDropdownActive = !mobileDropdownActive;
 
-    // filter dropdown sluit ook wanneer menu is gesloten
-    if (!mobileDropdownActive) {
-      filterDropdownActive = false;
+      // filter dropdown sluit ook wanneer het menu gesloten wordt
+      if (!mobileDropdownActive) {
+        filterDropdownActive = false;
+      }
     }
   }
 
   function openFilter() {
-    filterDropdownActive = !filterDropdownActive;
+    // funtie die kijkt of filterdropdown true of false is en deze naar de andere staat dan de huidige staat toe togglt.
+      filterDropdownActive = !filterDropdownActive;
+   
   }
 </script>
 
 <nav>
   <section class="nav-bar" class:active={mobileDropdownActive}>
     <!-- menu is a mobile only button -->
-    <button on:click={openMobileMenu}>Menu</button>
-    {#if mobileDropdownActive}
+    
       <div class="mobile-menu-dropdown">
+        <button on:click={openMobileMenu}>Menu</button>
+    {#if mobileDropdownActive}
         <button on:click={openFilter}> Filteren en zoeken</button>
         <a href="/">Inloggen</a>
         <a href="/">Werkvorm uploaden</a>
-      </div>
+      
     {/if}
+    </div>
     <section class="filter-dropdown" class:active={filterDropdownActive}>
       {#if filterDropdownActive}
         <section class="search-bar" role="search">
@@ -42,41 +49,45 @@
         </section>
         <section class="filter-menu">
           <ul class="focus">
-            <li><h2><input type="checkbox" /> Focus</h2></li>
-            <li><input type="checkbox" />Ik</li>
-            <li><input type="checkbox" />De ander</li>
-            <li><input type="checkbox" />De wereld</li>
+            <li><h2> Focus<input type="checkbox"></h2></li>
+            <li>Ik<input type="checkbox"></li>
+            <li>De ander<input type="checkbox"></li>
+            <li>De wereld<input type="checkbox"></li>
           </ul>
           <ul class="doel">
-            <li><h2><input type="checkbox" /> Doel</h2></li>
+            <li><h2> Doel<input type="checkbox"></h2></li>
 
-            <li><input type="checkbox" />Professioneel id ontwikkelen</li>
+            <li>Professioneel id ontwikkelen<input type="checkbox"></li>
             <li>
-              <input type="checkbox" />Persoonlijke interesse aanspreken
+             Persoonlijke interesse aanspreken<input type="checkbox">
             </li>
-            <li><input type="checkbox" />Kennis opdoen</li>
-            <li><input type="checkbox" />Richtlijnen toepassen</li>
-            <li><input type="checkbox" />Golden oldies verrijken</li>
-            <li><input type="checkbox" />Tools toepassen</li>
-            <li><input type="checkbox" />Dialoog voeren</li>
-            <li><input type="checkbox" />Praktijk betrekken</li>
+            <li>Kennis opdoen <input type="checkbox"></li>
+            <li>Richtlijnen toepassen<input type="checkbox"></li>
+            <li>Golden oldies verrijken<input type="checkbox"></li>
+            <li>Tools toepassen<input type="checkbox"></li>
+            <li>Dialoog voeren<input type="checkbox"></li>
+            <li>Praktijk betrekken<input type="checkbox"></li>
           </ul>
           <ul class="onderwerp">
-            <li><h2><input type="checkbox" /> Onderwerp</h2></li>
+            <li><h2> Onderwerp<input type="checkbox"></h2></li>
 
-            <li><input type="checkbox" />Duurzaamheid</li>
-            <li><input type="checkbox" />Diversiteit</li>
-            <li><input type="checkbox" />Digitalisering</li>
-            <li><input type="checkbox" />Democratie</li>
+            <li>Duurzaamheid<input type="checkbox"></li>
+            <li>Diversiteit<input type="checkbox"></li>
+            <li>Digitalisering<input type="checkbox"></li>
+            <li>Democratie<input type="checkbox"></li>
           </ul>
           <ul class="fase">
-            <li><h2><input type="checkbox" /> Fase</h2></li>
-            <li><input type="checkbox" />Opwarmer</li>
-            <li><input type="checkbox" />Verbreden</li>
-            <li><input type="checkbox" />Verdiepen</li>
-            <li><input type="checkbox" />Uitwisselen</li>
+            <li><h2>Fase<input type="checkbox" > </h2></li>
+            <li>Opwarmer<input type="checkbox"></li>
+            <li>Verbreden<input type="checkbox"></li>
+            <li>Verdiepen<input type="checkbox"></li>
+            <li>Uitwisselen<input type="checkbox"></li>
           </ul>
+          
+          <button class="activate-filters">Filters toepassen</button>
+       
         </section>
+       
       {/if}
     </section>
   </section>
@@ -84,12 +95,11 @@
 
 <style>
   * {
-    overflow-x: hidden;
+   
     color: white;
     margin: 0;
   }
-
-  .nav-bar > button {
+  .mobile-menu-dropdown > button {
     font-size: 2em;
     width: 100vw;
     background-color: #25167a;
@@ -97,7 +107,7 @@
     padding: 1em;
   }
 
-  .nav-bar > button:focus {
+  .mobile-menu-dropdown > button:focus {
     background-color: #66e5bf;
   }
 
@@ -133,21 +143,46 @@
     font-size: 1em;
     justify-content: center;
   }
+   /* zoekbalk */
+   .search-bar{
+    padding: 2em 0 0 1.5em;
+    
+  }
+  .search-bar input[type="text"]{
+    margin-left: 1em;
+    width: 60vw;
+  }
+  .sr-only{
+    position: absolute;
+    left: -99999999px;
+  }
 
   .filter-dropdown {
     background-color: #25167a;
   }
 
-  .sr-only {
-    position: absolute;
-    left: -1000000em;
-  }
-  /* functionaliteit voor menu */
 
-  .filter-dropdown,
-  .mobile-menu-dropdown {
-    /* display: none; */
-    visibility: hidden;
+  /* functionaliteit voor menu */
+  .filter-menu{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size:1rem;
+    
+  }
+  .filter-menu ul{
+    
+    margin: .5em;
+    padding: .5em;
+  }
+  .filter-menu ul > li{
+    list-style-type: none;
+    margin: 1em;
+    
+  }
+
+  .filter-menu input[type="checkbox"]{
+    margin-left: 1em;
   }
 
   .nav-bar.active .mobile-menu-dropdown,
@@ -156,33 +191,51 @@
     visibility: visible;
   
   }
+
+  .activate-filters{
+    display: flex;
+    height: max-content;
+    align-self: flex-end;
+    padding:1em;
+    margin: 1em;
+    
+  }
+
   /* container query ipv media? */
   @media (min-width: 700px) {
+    
     .nav-bar {
       font-size: 2em;
       display: flex;
       width: 80vw;
       position: relative;
       margin-bottom: 5em;
+      
     }
+    
     .nav-bar.active {
       box-shadow: 13px 20px 0px 1px black;
     }
-    .nav-bar > button {
-      width: max-content;
-      font-size: 1em;
-    }
-
+   
+    
     .mobile-menu-dropdown {
-      width: 100vw;
+      width: 80vw;
       flex-direction: row;
-      justify-content: space-evenly;
+      justify-content: space-between;
       align-items: center;
+      padding-left:1em;
     }
+    
+
 
     .mobile-menu-dropdown > button {
       align-items: center;
       font-size: 0.7em;
+      width: auto;
+    }
+    .mobile-menu-dropdown a:nth-child(1) {
+      padding-right: 0;
+     
     }
  .nav-bar.active {
     /* display: block; */
@@ -191,5 +244,23 @@
     flex-direction: column;
     
   }
+  .search-bar{
+    padding: 0 0 1em 1em;
+  }
+    
+ 
+  .search-bar input[type="text"]{
+    margin-left: 1em;
+    width: 20vw;
+  }
+  
+  .filter-menu{
+    padding-left: 1em;
+    
+  }
+  
+ 
+
+ 
   }
 </style>
